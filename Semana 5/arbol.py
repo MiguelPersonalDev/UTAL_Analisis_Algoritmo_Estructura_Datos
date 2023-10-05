@@ -45,18 +45,7 @@ def eliminarNodo(raiz,info):
                 raiz.info = aux.info
     return raiz, x
 
-def imprimirPorNivel(raiz):
-    pendientes = Cola()
-    arribo(pendientes, raiz)
-    while(not esVacia(pendientes)):
-        nodo = atencion(pendientes)
-        print(nodo.info)
-        if(nodo.izq is not None):
-            arribo(pendientes,nodo.izq)
-        if(nodo.der is not None):
-            arribo(pendientes, nodo.der)
-
-# def buscar() tarea
+# def buscar() tarea por ejemplo si existe o no existe retornar el elemento o None
 
 def imprimirInOrden(raiz):
     if(raiz is not None):
@@ -69,6 +58,19 @@ def imprimirPreOrden(raiz):
         print(raiz.info)
         imprimirPreOrden(raiz.izq)
         imprimirPreOrden(raiz.der)
+
+
+def imprimirPorNivel(raiz):
+    pendientes = Cola()
+    arribo(pendientes, raiz)
+    while(not esVacia(pendientes)):
+        nodo = atencion(pendientes)
+        print(nodo.info)
+        if(nodo.izq is not None):
+            arribo(pendientes,nodo.izq)
+        if(nodo.der is not None):
+            arribo(pendientes, nodo.der)
+
 
 # imprimir postOrder tarea
 

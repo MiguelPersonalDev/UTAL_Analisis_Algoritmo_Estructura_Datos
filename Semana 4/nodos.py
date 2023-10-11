@@ -14,10 +14,10 @@ class nodoPila(object):
 
 
 # Nodo Cola
-class nodoPila(object):
+class nodoCola(object):
     info, siguiente = None, None
 
 
-# Nodo Grafo Binario
-class nodoPila(object):
+# Nodo Arbol Binario
+class nodoArbol(object):
     info, izq, der = None, None, None

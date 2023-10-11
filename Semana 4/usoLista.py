@@ -14,7 +14,7 @@ print(tamanio(lista))
 
 print("----eliminado")
 print(eliminar(lista, "quinto"))
-print(eliminar(lista, "segundo"))
+print(eliminar(lista, "primero"))
 
 print("----fin manipulación")
 imprimir(lista)

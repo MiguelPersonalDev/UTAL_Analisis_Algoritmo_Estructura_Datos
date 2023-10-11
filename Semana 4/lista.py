@@ -37,7 +37,7 @@ def eliminar(lista, info):
     data = None
     # saber si es el primero de la lista
     if(lista.inicio.info == info):
-        data = lista.incio
+        data = lista.inicio
         lista.inicio = lista.inicio.siguiente
         lista.tamanio -= 1
     else:      

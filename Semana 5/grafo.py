@@ -1,6 +1,5 @@
 from cola import Cola, arribo, esVacia, atencion
 
-
 class nodoArista(object):
     def __init__(self, info, destino):
         self.info = info
@@ -116,7 +115,7 @@ def tamanio(grafo):
 
 
 def grafoVacio(grafo):
-    return grafo.inicio in None
+    return grafo.inicio is None
 
 
 def buscarVertice(grafo, info):
@@ -159,7 +158,7 @@ def esAdyacente(vertice, destino):
     resultado = False
     aux = vertice.adyacentes.inicio
     while aux is not None and not resultado:
-        if aux.destino == resultado:
+        if aux.destino == destino:
             resultado = True
         aux = aux.siguiente
     return resultado

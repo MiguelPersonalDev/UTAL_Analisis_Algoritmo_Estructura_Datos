@@ -11,3 +11,4 @@ HeapSort(heap)
 
 print(heap.vector)
 
+print(buscar_h(heap, 11))

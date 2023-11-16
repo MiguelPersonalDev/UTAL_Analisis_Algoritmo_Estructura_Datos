@@ -1,4 +1,8 @@
+from math import inf
 from cola import *
+from heap import *
+from pila import *
+
 
 class nodoArista(object):
     def __init__(self, info, destino):
@@ -22,7 +26,7 @@ class Arista(object):
 
 
 class Grafo(object):
-    def __init__(self, dirigido=True):
+    def __init__(self, dirigido=False):
         self.inicio = None
         self.dirigido = dirigido
         self.tamanio = 0
@@ -200,7 +204,6 @@ def imprimirPorAmplitud(grafo, vertice):
             arribo(cola, vertice)
             while not esVacia(cola):
                 nodo = atencion(cola)
-                print(nodo.info)
                 adyacentes = nodo.adyacentes.inicio
                 while adyacentes is not None:
                     adyacente = buscarVertice(grafo, adyacentes.destino)
@@ -209,3 +212,28 @@ def imprimirPorAmplitud(grafo, vertice):
                         arribo(cola, adyacente)
                     adyacentes = adyacentes.siguiente
         vertice = vertice.siguiente
+
+
+def dijkstra(grafo, origen, destino):
+    no_visitados = Heap(tamanio(grafo))
+    camino = Pila()
+    aux = grafo.inicio
+    while aux is not None:
+        if aux == origen:
+            arribo_h(no_visitados, [aux, None], 0)
+        else:
+            arribo_h(no_visitados, [aux, None], inf)
+        aux = aux.siguiente
+
+    while not heap_vacio(no_visitados):
+        dato = atencion_h(no_visitados)
+        apilar(camino, dato)
+        aux = dato[1][0].adyacentes.inicio
+
+        while aux is not None:
+            pos = buscar_h(no_visitados, buscarVertice(grafo, aux.destino))
+            if no_visitados.vector[pos][0] > dato[0] + aux.info:
+                no_visitados.vector[pos][1][1] = dato[1][0].info
+                cambiar_prioridad(no_visitados, pos, dato[0] + aux.info)
+            aux = aux.siguiente
+    return camino
